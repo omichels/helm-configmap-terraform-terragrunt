@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: alpine
+spec:
+  containers:
+  - image: alpine:latest
+    command:
+      - sleep
+      - "3600"
+    imagePullPolicy: IfNotPresent
+    name: alpine
+    volumeMounts:
+    - name: {{ .Release.Name }}-configmap-volume
+      mountPath: /etc/config/application.properties
+      subPath: application.properties
+  restartPolicy: Always
+  volumes:
+    - name: {{ .Release.Name }}-configmap-volume
+      configMap:
+        name: {{ .Release.Name }}-configmap
