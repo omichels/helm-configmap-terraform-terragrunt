@@ -1,0 +1,5 @@
+helm-charts/example/.helmignore
+terraform/.terraform/
+terragrunt/dev/.terragrunt-cache/
+terragrunt/test/.terragrunt-cache/
+terragrunt/prod/.terragrunt-cache/
